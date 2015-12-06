@@ -1,9 +1,9 @@
 {
-  "name": "angular-masonry",
+  "name": "ngMasonry",
   "version": "1.0.0",
   "description": "AngularJS Directive for Masonry Layout",
   "main": "index.js",
-  "author": "Lucas L.",
+  "author": "Lucas L. <lucas@codeopolis.com>",
   "license": "MIT",
   "repository": "https://github.com/lucaslim/angular-masonry.git",
   "dependencies": {
