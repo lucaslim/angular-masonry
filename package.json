@@ -1,5 +1,5 @@
 {
-  "name": "ngMasonry",
+  "name": "ng-masonry",
   "version": "1.0.0",
   "description": "AngularJS Directive for Masonry Layout",
   "main": "index.js",

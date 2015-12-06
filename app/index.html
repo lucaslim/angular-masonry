@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-ng-app="code.masonry">
+<html lang="en" data-ng-app="ngMasonry">
 <head>
     <base href="\">
     <meta charset="UTF-8">
@@ -7,8 +7,9 @@
 </head>
 <body data-ng-view>
 <h1>AngularJS Masonry</h1>
-<div data-masonry class="masonry-container" >
-    <div data-masonry-item  class="masonry-item"  data-ng-repeat="n in [42, 42, 43, 43] track by $index">
+
+<div data-masonry data-masonry-options='{ "columnWidth": 200 }'>
+    <div data-masonry-item data-ng-repeat="n in [42, 42, 43, 43] track by $index">
         {{ n }}
     </div>
 </div>
