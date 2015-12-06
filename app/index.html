@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-ng-app="code.masonry">
 <head>
     <base href="\">
     <meta charset="UTF-8">
@@ -7,13 +7,15 @@
 </head>
 <body data-ng-view>
 <h1>AngularJS Masonry</h1>
-
-<div data-masonry class="masonry-container" data-masonry-options='{ "columnWidth": 500 }'>
-    <div data-masonry-item class="masonry-item" data-ng-repeat="n in [42, 42, 43, 43] track by $index">
+<!--data-masonry-item-after-render-->
+<!--<div data-masonry class="masonry-container" data-masonry-options='{ "columnWidth": 500 }'>-->
+<div data-masonry class="masonry-container" >
+    <div data-masonry-item  class="masonry-item"  data-ng-repeat="n in [42, 42, 43, 43] track by $index">
         {{ n }}
     </div>
 </div>
 <script>window.angular || document.write('<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"><\/script>')</script>
+<script>window.Masonry || document.write('<script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"><\/script>')</script>
 <script src="angular-masonry.js"></script>
 </body>
 </html>

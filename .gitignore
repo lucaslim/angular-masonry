@@ -4,6 +4,7 @@ bower_components/
 *.log
 
 dist/
+build/
 dev/
 test/
 ### Example user template template

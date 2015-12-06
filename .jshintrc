@@ -1,6 +1,7 @@
 {
   "globalstrict": true,
   "globals": {
+    "angular": false,
     "define": false,
     "module": false,
     "require": false,
