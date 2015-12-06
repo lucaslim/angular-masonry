@@ -1,2 +1,2 @@
 require('./angular-masonry');
-module.exports = 'code.masonry';
+module.exports = 'ngMasonry';

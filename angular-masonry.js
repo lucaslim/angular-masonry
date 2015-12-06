@@ -8,11 +8,11 @@
             typeof Masonry ? Masonry : require('masonry-layout')
         );
     } else {
-        root.angularMasonry = factory(angular, Masonry);
+        root.ngMasonry = factory(angular, Masonry);
     }
 }(this, function (angular, Masonry) {
     'use strict';
-    angular.module('code.masonry', [])
+    angular.module('ngMasonry', [])
         .controller('masonryController', function () {
             var vm = this;
 
