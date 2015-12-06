@@ -5,9 +5,6 @@
         gulp = require('gulp'),
         bs = require('browser-sync').create(),
         rs = require('run-sequence'),
-        browserify = require('browserify'),
-        source = require('vinyl-source-stream'),
-        buffer = require('vinyl-buffer'),
         ngAnnotate = require('gulp-ng-annotate'),
         uglify = require('gulp-uglify'),
         concat = require('gulp-concat'),
@@ -52,7 +49,7 @@
      */
 
     gulp.task('js:build:min', ['jshint'], function () {
-        return gulp.src(['./node_modules/masonry-layout/masonry.js', './app/angular-masonry.js'])
+        return gulp.src(['./app/angular-masonry.js', './node_modules/masonry-layout/masonry.js'])
             .pipe(ngAnnotate({single_node: true}))
             .pipe(uglify({compress: true, mangle: true}))
             .pipe(concat('angular-masonry.min.js'))
@@ -60,7 +57,7 @@
     });
 
     gulp.task('js:build', ['jshint'], function () {
-        return gulp.src(['./node_modules/masonry-layout/masonry.js', './app/angular-masonry.js'])
+        return gulp.src(['./app/angular-masonry.js', './node_modules/masonry-layout/masonry.js'])
             .pipe(ngAnnotate({single_node: true}))
             .pipe(concat('angular-masonry.js'))
             .pipe(gulp.dest('./'));
