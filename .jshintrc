@@ -1,0 +1,34 @@
+{
+  "globalstrict": true,
+  "globals": {
+    "define": false,
+    "module": false,
+    "require": false,
+    "console": false,
+    /* MOCHA */
+    "inject": false,
+    "expect": false,
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false
+  },
+  "strict": true,
+  "curly": true,
+  "eqeqeq": false,
+  "immed": false,
+  "latedef": false,
+  "newcap": true,
+  "noarg": true,
+  "sub": true,
+  "undef": true,
+  "unused": "vars",
+  "boss": true,
+  "eqnull": true,
+  "browser": true,
+  "laxbreak": true,
+  "expr": true,
+  "onevar": true
+}
