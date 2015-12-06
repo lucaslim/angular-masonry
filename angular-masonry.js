@@ -17,7 +17,6 @@
             var vm = this;
 
             vm.config = {};
-            vm.postRender = null;
             vm.ready = ready;
             vm.initialize = initialize;
             vm.reLayout = reLayout;
