@@ -1,11 +1,25 @@
 {
   "name": "ng-masonry",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "AngularJS Directive for Masonry Layout",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "directive",
+    "masonry"
+  ],
   "main": "index.js",
-  "author": "Lucas L. <lucas@codeopolis.com>",
+  "author": {
+    "name": "Lucas Lim",
+    "email": "hello@codeopolis.com",
+    "url": "http://www.codeopolis.com"
+  },
   "license": "MIT",
   "repository": "https://github.com/lucaslim/angular-masonry.git",
+  "bugs": {
+    "url": "https://github.com/lucaslim/angular-masonry/issues"
+  },
+  "homepage": "https://github.com/lucaslim/angular-masonry/",
   "dependencies": {
     "angular": "1.4.8",
     "gulp": "3.9.0",
