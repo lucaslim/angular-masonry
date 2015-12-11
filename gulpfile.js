@@ -49,7 +49,7 @@
      */
 
     gulp.task('js:build:min', ['jshint'], function () {
-        return gulp.src(['./app/angular-masonry.js', './node_modules/masonry-layout/masonry.js'])
+        return gulp.src('./app/angular-masonry.js')
             .pipe(ngAnnotate({single_node: true}))
             .pipe(uglify({compress: true, mangle: true}))
             .pipe(concat('angular-masonry.min.js'))
@@ -57,7 +57,7 @@
     });
 
     gulp.task('js:build', ['jshint'], function () {
-        return gulp.src(['./app/angular-masonry.js', './node_modules/masonry-layout/masonry.js'])
+        return gulp.src('./app/angular-masonry.js')
             .pipe(ngAnnotate({single_node: true}))
             .pipe(concat('angular-masonry.js'))
             .pipe(gulp.dest('./'));

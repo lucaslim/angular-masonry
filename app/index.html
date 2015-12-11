@@ -4,17 +4,45 @@
     <base href="\">
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        [data-masonry-item] {
+            /*display: block;*/
+            width: 200px;
+            background: #333;
+            color: #fff;
+            margin: 5px;
+        }
+    </style>
 </head>
 <body data-ng-view>
-<h1>AngularJS Masonry</h1>
+<h1>AngularJS Masonry Test</h1>
 
-<div data-masonry data-masonry-options='{ "columnWidth": 200 }'>
+
+<div data-masonry data-masonry-options='{"columnWidth": 100}'>
     <div data-masonry-item data-ng-repeat="n in [42, 42, 43, 43] track by $index">
-        {{ n }}
+        {{n}} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium autem consequuntur cumque expedita
+        facere fugit in iusto minus nesciunt nihil nisi odit officia omnis quae repellat repudiandae tempora, totam
+        veritatis!
+    </div>
+    <div data-masonry-item ng-repeat="n in [42, 42, 43, 43] track by $index">
+        {{n}}
+    </div>
+    <div data-masonry-item>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cupiditate deserunt eligendi
+        eos
+        error, ex facere fugit id laboriosam minus necessitatibus nesciunt officiis perferendis perspiciatis,
+        praesentium recusandae veniam vitae voluptatem?
+    </div>
+    <div data-masonry-item>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cupiditate deserunt eligendi
+        eos
+        error, ex facere fugit id laboriosam minus necessitatibus nesciunt officiis perferendis perspiciatis,
+        praesentium recusandae veniam vitae voluptatem?
     </div>
 </div>
+
+
 <script>window.angular || document.write('<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"><\/script>')</script>
 <script>window.Masonry || document.write('<script src="//cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.min.js"><\/script>')</script>
+<script>window.imagesLoaded || document.write('<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.2.0/imagesloaded.pkgd.min.js"><\/script>')</script>
 <script src="angular-masonry.js"></script>
 </body>
 </html>

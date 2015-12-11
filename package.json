@@ -21,12 +21,11 @@
   },
   "homepage": "https://github.com/lucaslim/angular-masonry/",
   "dependencies": {
-    "angular": "1.4.8",
-    "gulp": "3.9.0",
-    "masonry-layout": "3.3.2"
+    "angular": "1.4.8"
   },
   "devDependencies": {
     "browser-sync": "2.10.0",
+    "gulp": "3.9.0",
     "gulp-concat": "2.6.0",
     "gulp-jshint": "2.0.0",
     "gulp-ng-annotate": "1.1.0",

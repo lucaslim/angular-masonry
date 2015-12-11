@@ -1,22 +1,12 @@
-;(function (root, factory) {
+;(function() {
     'use strict';
-    if (typeof define === 'function' && define.amd) {
-        define(['angular', 'Masonry'], factory);
-    } else if (typeof exports === 'object') {
-        module.exports = factory(
-            typeof angular ? angular : require('angular'),
-            typeof Masonry ? Masonry : require('masonry-layout')
-        );
-    } else {
-        root.ngMasonry = factory(angular, Masonry);
-    }
-}(this, function (angular, Masonry) {
-    'use strict';
+
     angular.module('ngMasonry', [])
         .controller('masonryController', function () {
             var vm = this;
 
             vm.config = {};
+            vm.container = undefined;
             vm.ready = ready;
             vm.initialize = initialize;
             vm.reLayout = reLayout;
@@ -26,12 +16,16 @@
             }
 
             function initialize() {
-                var defaultOpts = {itemSelector: '[' + vm.config.masonryItem + ']'},
-                    opts = !vm.config.masonryOption
-                        ? defaultOpts
-                        : angular.extend(defaultOpts, vm.config.masonryOption);
+                var defaultOpts = {itemSelector: vm.config.masonryItem},
+                    opts = !vm.config.masonryOption ? defaultOpts : angular.extend(defaultOpts, vm.config.masonryOption);
 
-                vm.container = new Masonry('[' + vm.config.masonryContainer + ']', opts);
+                vm.container = new Masonry(vm.config.masonryContainer, opts);
+
+                if (imagesLoaded !== undefined) {
+                    new imagesLoaded(vm.config.masonryContainer, function () {
+                        vm.reLayout();
+                    });
+                }
             }
 
             function reLayout() {
@@ -47,18 +41,26 @@
 
             return directive;
 
-            function compile(element) {
-                var child = element.children();
-                if (child.length >= 1 && child.attr('data-masonry-item') !== undefined) {
-                    var newChild = child.attr('data-masonry-after-render', '');
-                    child.remove();
-                    element.append(newChild);
-                }
+            function compile(element, attributes) {
+                var flag = false,
+                    child = angular.element(document.querySelectorAll('[' + attributes.$attr.masonry + '] [data-masonry-item], [' + attributes.$attr.masonry + '] [masonry-item]'));
 
+                angular.forEach(child, function (obj) {
+                    obj = angular.element(obj);
+                    if (obj.attr('ng-repeat') !== undefined || obj.attr('data-ng-repeat') !== undefined) {
+                        flag = true;
+                        obj.attr('data-masonry-after-render', '');
+                    }
+                });
                 return {
+                    pre: function (scope, element, attributes, controller) {
+                        controller.config.masonryContainer = '[' + attributes.$attr.masonry + ']';
+                        controller.config.masonryOptions = JSON.parse(attributes.masonryOptions || '{}');
+                    },
                     post: function (scope, element, attributes, controller) {
-                        controller.config.masonryContainer = attributes.$attr.masonry;
-                        controller.config.masonryOption = JSON.parse(attributes.masonryOptions || '{}');
+                        if (!flag) {
+                            controller.initialize();
+                        }
                     }
                 };
             }
@@ -68,20 +70,23 @@
                 restrict: 'A',
                 require: '^masonry',
                 priority: 1,
-                link: link
+                compile: compile
             };
 
             return directive;
 
-            function link(scope, element, attributes, controller) {
-                if (scope.$last && controller.ready()) {
-                    controller.config.masonryItem = attributes.$attr.masonryItem;
-                    controller.initialize();
-                }
+            function compile() {
+                return {
+                    pre: function (scope, element, attributes, controller) {
+                        if (controller.config.masonryItem === undefined) {
+                            controller.config.masonryItem = '[' + attributes.$attr.masonryItem + ']';
+                        }
+                    }
+                };
             }
         })
         .directive('masonryAfterRender', function ($timeout) {
-
+            'ngInject';
             var directive = {
                 restrict: 'A',
                 require: '^masonry',
@@ -95,10 +100,10 @@
                 if (scope.$last) {
                     var timeout = null;
                     timeout = $timeout(function () {
-                        controller.reLayout();
+                        controller.initialize();
                         $timeout.cancel(timeout);
                     });
                 }
             }
         });
-}));
+});
