@@ -1,8 +1,5 @@
 'use strict';
 
-var Masonry = require('./node_modules/masonry-layout/masonry');
-var imagesLoaded = require('./node_modules/imagesLoaded');
-
 angular.module('ngMasonry', [])
     .controller('masonryController', function () {
         var vm = this;
