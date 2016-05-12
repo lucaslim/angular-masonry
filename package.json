@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/lucaslim/angular-masonry/",
   "dependencies": {
-    "angular": "1.4.8"
+    "angular": "1.4.8",
+    "imagesloaded": "^4.1.0",
+    "masonry-layout": "^4.1.0"
   },
   "devDependencies": {
     "browser-sync": "2.10.0",
