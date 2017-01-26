@@ -19,7 +19,7 @@ angular.module('ngMasonry', [])
 
         function initialize() {
             var defaultOpts = {itemSelector: vm.config.masonryItem},
-                opts = !vm.config.masonryOption ? defaultOpts : angular.extend(defaultOpts, vm.config.masonryOption);
+                opts = !vm.config.masonryOptions ? defaultOpts : angular.extend(defaultOpts, vm.config.masonryOptions);
 
             vm.container = new Masonry(vm.config.masonryContainer, opts);
 
