@@ -9,7 +9,7 @@ npm install --save ng-masonry
 ```
 require module
 ```js
-var ngMasonry = require('ngMasonry')
+var ngMasonry = require('ng-masonry')
 ```
 attach module to application
 ```js
