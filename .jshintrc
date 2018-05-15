@@ -14,7 +14,9 @@
     "before": false,
     "beforeEach": false,
     "after": false,
-    "afterEach": false
+    "afterEach": false,
+    "Masonry": false,
+    "ImagesLoaded": false
   },
   "strict": true,
   "curly": true,
