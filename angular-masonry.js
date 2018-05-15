@@ -1,8 +1,5 @@
 'use strict';
 
-var Masonry = require('./node_modules/masonry-layout/masonry');
-var imagesLoaded = require('./node_modules/imagesLoaded');
-
 angular.module('ngMasonry', [])
     .controller('masonryController', function () {
         var vm = this;
@@ -87,7 +84,7 @@ angular.module('ngMasonry', [])
             };
         }
     })
-    .directive('masonryAfterRender', ["$timeout", function ($timeout) {
+    .directive('masonryAfterRender', ["$rootScope", "$timeout", function ($rootScope,$timeout) {
         'ngInject';
         var directive = {
             restrict: 'A',
@@ -104,6 +101,7 @@ angular.module('ngMasonry', [])
                 timeout = $timeout(function () {
                     controller.initialize();
                     $timeout.cancel(timeout);
+                    $rootScope.$emit('masonryLoaded');
                 });
             }
         }

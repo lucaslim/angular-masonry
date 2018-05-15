@@ -20,8 +20,8 @@ angular.module('ngMasonry', [])
 
             vm.container = new Masonry(vm.config.masonryContainer, opts);
 
-            if (typeof imagesLoaded !== 'undefined') {
-                new imagesLoaded(vm.config.masonryContainer, function () {
+            if (typeof ImagesLoaded !== 'undefined') {
+                new ImagesLoaded(vm.config.masonryContainer, function () {
                     vm.reLayout();
                 });
             }
@@ -84,7 +84,7 @@ angular.module('ngMasonry', [])
             };
         }
     })
-    .directive('masonryAfterRender', function ($timeout) {
+    .directive('masonryAfterRender', function ($rootScope,$timeout) {
         'ngInject';
         var directive = {
             restrict: 'A',
@@ -101,6 +101,7 @@ angular.module('ngMasonry', [])
                 timeout = $timeout(function () {
                     controller.initialize();
                     $timeout.cancel(timeout);
+                    $rootScope.$emit('masonryLoaded');
                 });
             }
         }
